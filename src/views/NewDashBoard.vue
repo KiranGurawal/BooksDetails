@@ -35,7 +35,7 @@
           <td><v-icon
           small
           class="mr-2"
-          @click="dialog=true"
+          @click="dialog=true;editBookDetails(item)"
           >
           mdi-pencil
           </v-icon>
@@ -43,7 +43,7 @@
           <td>
           <v-icon
           small
-          @click="dialog=true"
+          @click="dialog=false;deleteBookDetails(item.bookName)"
           >
           mdi-delete
           </v-icon>
@@ -52,11 +52,7 @@
       </tbody>
       <div>
       <v-btn @click="dialog=true">New Book</v-btn>
-      <AddBook :dialog="dialog" v-on:addBook="saveBookDetails($event)" @closeDialog="dialog=false" v-if="dialog" />
-      </div>
-      <div>
-        <!-- <EditBook /> -->
-        <new />
+      <AddBook :dialog="dialog" v-on:addBook="saveBookDetails($event)" @closeDialog="dialog=false" v-if="dialog"  />
       </div>
     </template>
   </v-simple-table>
@@ -111,6 +107,16 @@ export default{
     saveBookDetails(bookDetails) {
       this.book.unshift(bookDetails)
      // console.log(bookDetails, 'In parent');
+    },
+    editBookDetails(book){
+
+      console.log(book)
+    },
+    deleteBookDetails(name){
+      const index =this.book.indexOf(this.book.find(item=> item.bookName == name))
+      //console.log("item", index)
+      alert("delete this Book")
+      this.book.splice(index, 1);
     }
   },
 }

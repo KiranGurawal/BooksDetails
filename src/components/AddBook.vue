@@ -5,6 +5,8 @@
     v-model="dialog"
       persistent
       max-width="600px"
+      v-bind="book"
+
     >
       <v-card>
         <v-card-title>
@@ -58,16 +60,16 @@
         </v-card-text>
         <v-card-actions>
           <v-btn
-            color="blue darken-1"
+            color="red"
             text
             @click="$emit('closeDialog', false)"
           >
             Close
           </v-btn>
           <v-btn
-            color="blue darken-1"
+            color="green"
             text
-            @click="saveBook();"
+            @click="saveBook()"
           >
             Save
           </v-btn>
@@ -88,21 +90,16 @@ export default {
         publishedOn:"",
         pageNo:"",
       },
-      booksArray:[],
     }
   },
   props:{
     dialog: Boolean,
+
   },
   methods:{
     saveBook() {
       this.$emit('addBook', this.book);
-      // this.booksArray.({
-      //   bookName:this.bookName,
-      //   authorName:this.authorName,
-      //   publishedOn:this.publishedOn,
-      //   pageNo:this.pageNoInput
-      // })
+      //this.dialog1 = false;
     },
   },
 };
