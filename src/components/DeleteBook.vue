@@ -35,6 +35,7 @@ export default{
   name:"DeleteBook",
   data(){
     return{
+      dialog1 :""
     }
   },
   props:{
@@ -48,6 +49,7 @@ export default{
       console.log("item", index)
      // console.log("items", this.book)
       this.book.splice(index,1)
+      this.dialog1 = false
     }
   }
 }

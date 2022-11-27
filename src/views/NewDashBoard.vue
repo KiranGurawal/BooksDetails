@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <th class="text-left">
-            Book Id
+            Books Id
           </th>
           <th class="text-left">
             Books Name
@@ -29,10 +29,10 @@
       <tbody>
         <tr
           v-for="item in book"
-          :key="item.itemid"
+          :key="item.id"
         > 
-          <td>{{item.itemid}}</td>
-          <td>{{item.bookName }}</td>
+          <td>{{ item.id }}</td>
+          <td>{{ item.bookName }}</td>
           <td>{{item.authorName }}</td>
           <td>{{item.publishedOn}}</td>
           <td>{{item.pageNo}}</td>
@@ -50,7 +50,7 @@
           small
           class="mr-2z"
           color="black"
-          @click ="dialog1 = true, itemid =item.itemid"
+          @click ="dialog1 = true , itemid = item.id"
           > 
           mdi-delete
           </v-icon>
@@ -62,7 +62,7 @@
       </div>
       <div>
       <v-btn color="yellow" @click="dialog=true">New Book</v-btn>
-      <AddBook :book="book"  :dialog="dialog" v-on:addBook="saveBookDetails($event)" @closeDialog="dialog=false" v-if="dialog"  />
+      <AddBook :editItem="editItem" :dialog="dialog" v-on:addBook="saveBookDetails($event)" v-on:updateBook="updateB($event)"  @closeDialog="dialog=false" v-if="dialog"  />
       </div>
 
     </template>
@@ -71,45 +71,47 @@
 <script>
 import AddBook from '../components/AddBook.vue'
 import DeleteBook from '../components/DeleteBook.vue'
+import EditBook from '../components/EditBook.vue'
 export default{
   name:'NewDashBoard', 
   components:{
     AddBook,
-    DeleteBook
+    DeleteBook,
+    EditBook
   },
   data(){
     return{
       book :[
         {
-        itemid:1,
+        id:1,
         bookName:"The Last Chairlift",
         authorName:"John Irving",
         publishedOn:"October 18th 2022",
         pageNo:"912",  
         },
         {
-        itemid:2,
+        id:2,
         bookName:"A Scatter of Light",
         authorName:"Malinda Lo",
         publishedOn:"October 18th 2022",
         pageNo:"912", 
         },
         {
-        itemid:3,
+        id:3,
         bookName:"Hester",
         authorName:"John Irving",
         publishedOn:"October 18th 2022",
         pageNo:"912", 
         },
         {
-        itemid:4,
+        id:4,
         bookName:"Lavender House",
         authorName:"John Irving",
         publishedOn:"October 18th 2022",
         pageNo:"912", 
         },
         {
-        itemid:5,
+        id:5,
         bookName:"Jackal",
         authorName:" Erin E. Adams ",
         publishedOn:"October 18th 2022",
@@ -117,26 +119,31 @@ export default{
         }
       ],
       dialog: false,
-      dialog1:false,
-      editItem :[],
-
+      dialog1: false,
+      editItem :[]
     }
   },
   methods:{
-    saveBookDetails(bookDetails) { 
-      this.book.unshift(bookDetails)
-     // console.log(bookDetails);
+    saveBookDetails(bookDetails) {
+      this.book.push(bookDetails);
       this.dialog=false
     } ,
-   
     editBookDetails(item){
       this.dialog = true;
-      
-      const editItem = this.book.indexOf(item.itemid);
-      console.log(item)
-      this.editItem = Object.assign({},this.item)
-     // console.log(editItem)
-    }
+      this.editItem = item;
+    },
+
+    updateB(bookDetails){
+      let index = this.book.findIndex(item => item.id === bookDetails.id);
+      this.book.splice(index, 1, bookDetails);
+      this.dialog=false
+    },
+    // deleteBookDetails(item){
+    //   this.dialog = true;
+    //   const DeleteItem = item.id;
+    //   this.DeleteItem = Object.assign({},this.item.id)
+    //   console.log(DeleteItem)
+    // }
   }
 }
 </script>
