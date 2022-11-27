@@ -8,8 +8,9 @@
       <div class="d-flex align-center">
         <nav>
           
-      <router-link to="/">Home</router-link> |
-      <router-link to="/SignUp">Sign Up</router-link>
+      <router-link to="/">Home</router-link>  |
+      <router-link to="/SignUp">Sign Up</router-link>  |
+      <router-link to="/user">User</router-link>
         </nav>
 
       </div>

@@ -122,7 +122,7 @@ export default {
       if(this.errorEmail == "" && this.errorPassword==""){
         if(this.email == loginDetails[0].email && this.password == loginDetails[0].password){
           console.log('Login verified');
-          this.$router.push('/dashboard');
+          this.$router.push('/newdashboard');
         }
       }
        }

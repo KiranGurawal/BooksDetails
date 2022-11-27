@@ -34,6 +34,11 @@ const routes = [
   name:'NewDashBoard',
   component:() => import('../views/NewDashBoard')
   },
+  {
+    path:'/user',
+    name:'User',
+    component:() => import('../views/User')
+  }
   
    
 ]

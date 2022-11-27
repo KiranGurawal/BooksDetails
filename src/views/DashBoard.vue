@@ -2,8 +2,6 @@
   <div>
     <v-data-table
       :headers="headers"
-      :items="books"
-      sort-by="author"
       class="elevation-1"
     >
     <!-- <Edit />
