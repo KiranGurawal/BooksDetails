@@ -11,7 +11,7 @@
               <v-col cols="12" sm="6" md="4">
                 <v-text-field
                   label="Book Id"
-                  v-model="book.id"
+                  v-model="book.itemid"
                   required
                 ></v-text-field>
               </v-col>
@@ -64,7 +64,7 @@ export default {
   data() {
     return {
       book: {
-        id: "",
+        itemid: "",
         bookName: "",
         authorName: "",
         publishedOn: "",
@@ -85,7 +85,7 @@ export default {
   },
   methods: {
     saveBook() {
-      if (this.book.id == "") {
+      if (this.book.itemid == "") {
         alert("required all fields");
       }
       // else if(this.books.itemid ===book.itemid){

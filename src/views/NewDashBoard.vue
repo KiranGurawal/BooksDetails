@@ -29,9 +29,9 @@
       <tbody>
         <tr
           v-for="item in book"
-          :key="item.id"
+          :key="item.itemid"
         > 
-          <td>{{ item.id }}</td>
+          <td>{{ item.itemid}}</td>
           <td>{{ item.bookName }}</td>
           <td>{{item.authorName }}</td>
           <td>{{item.publishedOn}}</td>
@@ -50,7 +50,7 @@
           small
           class="mr-2z"
           color="black"
-          @click ="dialog1 = true , itemid = item.id"
+          @click ="dialog1 = true , itemid = item.itemid"
           > 
           mdi-delete
           </v-icon>
@@ -62,7 +62,7 @@
       </div>
       <div>
       <v-btn color="yellow" @click="dialog=true">New Book</v-btn>
-      <AddBook :editItem="editItem" :dialog="dialog" v-on:addBook="saveBookDetails($event)" v-on:updateBook="updateB($event)"  @closeDialog="dialog=false" v-if="dialog"  />
+      <AddBook :editItem="editItem" :dialog="dialog" v-on:addBook="saveBookDetails($event)" v-on:updateBook="update($event)"  @closeDialog="dialog=false" v-if="dialog"  />
       </div>
 
     </template>
@@ -83,35 +83,35 @@ export default{
     return{
       book :[
         {
-        id:1,
+        itemid:1,
         bookName:"The Last Chairlift",
         authorName:"John Irving",
         publishedOn:"October 18th 2022",
         pageNo:"912",  
         },
         {
-        id:2,
+        itemid:2,
         bookName:"A Scatter of Light",
         authorName:"Malinda Lo",
         publishedOn:"October 18th 2022",
         pageNo:"912", 
         },
         {
-        id:3,
+        itemid:3,
         bookName:"Hester",
         authorName:"John Irving",
         publishedOn:"October 18th 2022",
         pageNo:"912", 
         },
         {
-        id:4,
+        itemid:4,
         bookName:"Lavender House",
         authorName:"John Irving",
         publishedOn:"October 18th 2022",
         pageNo:"912", 
         },
         {
-        id:5,
+        itemid:5,
         bookName:"Jackal",
         authorName:" Erin E. Adams ",
         publishedOn:"October 18th 2022",
@@ -125,25 +125,20 @@ export default{
   },
   methods:{
     saveBookDetails(bookDetails) {
-      this.book.push(bookDetails);
+      this.book.unshift(bookDetails);
       this.dialog=false
     } ,
     editBookDetails(item){
       this.dialog = true;
       this.editItem = item;
+      //console.log(editItem)
     },
 
-    updateB(bookDetails){
-      let index = this.book.findIndex(item => item.id === bookDetails.id);
+    update(bookDetails){
+      let index = this.book.findIndex(item => item.itemid === bookDetails.itemid);
       this.book.splice(index, 1, bookDetails);
       this.dialog=false
     },
-    // deleteBookDetails(item){
-    //   this.dialog = true;
-    //   const DeleteItem = item.id;
-    //   this.DeleteItem = Object.assign({},this.item.id)
-    //   console.log(DeleteItem)
-    // }
   }
 }
 </script>
