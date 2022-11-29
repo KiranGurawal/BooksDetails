@@ -16,36 +16,36 @@
           <td>{{ item.id }}</td>
           <td>{{ item.name }}</td>
           <td>{{ item.email }}</td>
-          <td>{{ item.phone}}</td>
-          <td>{{item.address.city}}</td>
-          <td>{{item.address.zipcode}}</td>
+          <td>{{ item.phone }}</td>
+          <td>{{ item.address.city }}</td>
+          <td>{{ item.address.zipcode }}</td>
         </tr>
       </tbody>
     </template>
   </v-simple-table>
 </template>
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
-
   name: "User",
   data() {
     return {
       data: [],
     };
   },
-   async mounted(){
-        // let fetchData = await axios.get("https://jsonplaceholder.typicode.com/users")
-        //  //console.log(fetchData.data)
-        //  this.data = fetchData.data
-        await this.getUsers().then((resopnse)=>{
-          this.data = resopnse.data;
-        });
+  async mounted() {
+    // let fetchData = await axios.get("https://jsonplaceholder.typicode.com/users")
+    //  //console.log(fetchData.data)
+    //  this.data = fetchData.data
+    await this.getUsers().then((resopnse) => {
+      this.data = resopnse.data;
+      // console.log(this.data)
+    });
+  },
+  methods: {
+    getUsers() {
+      return axios.get("https://jsonplaceholder.typicode.com/users");
     },
-    methods:{
-          getUsers(){
-            return axios.get("https://jsonplaceholder.typicode.com/users")
-          }
-    }
+  },
 };
 </script>

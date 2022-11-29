@@ -45,6 +45,7 @@ export default{
   },
   methods:{
      deleteBookDetails(itemid){
+     // console.log(itemid)
       let index = itemid-1
       console.log("item", index)
      // console.log("items", this.book)

@@ -75,14 +75,15 @@ export default {
   },
   created: function () {
     this.book = this.editItem;
-    if (this.book == null) {
-      this.isUpdating = false;
-    }
+    // if (this.book == null) {
+    //   this.isUpdating = false;
+    // }
   },
   props: {
     dialog: Boolean,
-    editItem: Object,
+    editItem: Array,
   },
+  
   methods: {
     saveBook() {
       if (this.book.itemid == "") {

@@ -19,23 +19,24 @@
   </v-simple-table>
 </template>
 <script>
-import axios from 'axios';
 export default {
 
   name: "User2",
   data() {
     return {
       data: [],
+    
     };
   },
-  methods:{
-             let add = fetch('https://jsonplaceholder.typicode.com/users')
+  mounted(){
+            fetch('https://jsonplaceholder.typicode.com/users')
              .then(function(response){
                 return response.json();
              }).then(function(result){
-                console.log(result);
+              console.log(result)
              })
-             console.log(add)
+            // console.log()
+
   }
 
 };

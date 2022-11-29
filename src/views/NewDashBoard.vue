@@ -131,6 +131,7 @@ export default{
     editBookDetails(item){
       this.dialog = true;
       this.editItem = item;
+      //console.log("-----",item)
       //console.log(editItem)
     },
 
