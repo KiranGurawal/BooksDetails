@@ -130,7 +130,6 @@ export default {
   methods: {
     saveBookDetails(bookDetails) {
       this.book.push(bookDetails);
-      // console.log(bookDetails);
       this.dialog = false;
     },
     editBookDetails(item) {
@@ -139,7 +138,6 @@ export default {
       this.book[item.id - 1].bookName = item.bookName;
       this.book[item.id - 1].publishedOn = item.publishedOn;
       this.book[item.id - 1].pageNo = item.pageNo;
-      //console.log(this.book);
     },
   },
 };

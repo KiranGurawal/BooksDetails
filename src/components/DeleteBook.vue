@@ -44,9 +44,7 @@ export default {
     deleteBookDetails(itemid) {
       let index = itemid - 1;
       console.log("item", index);
-      // console.log("items", this.book)
       this.book.splice(index, 1);
-      this.dialog1 = false;
     },
   },
 };
