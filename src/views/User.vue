@@ -34,12 +34,8 @@ export default {
     };
   },
   async mounted() {
-    // let fetchData = await axios.get("https://jsonplaceholder.typicode.com/users")
-    //  //console.log(fetchData.data)
-    //  this.data = fetchData.data
     await this.getUsers().then((resopnse) => {
       this.data = resopnse.data;
-      // console.log(this.data)
     });
   },
   methods: {

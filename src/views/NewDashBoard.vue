@@ -139,8 +139,7 @@ export default {
       this.book[item.id - 1].bookName = item.bookName;
       this.book[item.id - 1].publishedOn = item.publishedOn;
       this.book[item.id - 1].pageNo = item.pageNo;
-      // this.editItem = Object.assign({},this.item)
-      console.log(this.book);
+      //console.log(this.book);
     },
   },
 };

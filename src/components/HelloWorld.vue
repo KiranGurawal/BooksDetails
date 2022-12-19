@@ -3,7 +3,7 @@
     <v-row class="text-center">
       <v-col cols="12">
         <v-img
-          :src="require('../assets/images.png')"
+          :src="require('../assets/Vue-features.jpg')"
           class="my-3"
           contain
           height="200"
@@ -11,15 +11,14 @@
       </v-col>
       <v-col class="mb-4">
         <h1 class="display-2 font-weight-bold mb-3">
-          Welcome <v-span class="span">to</v-span> DeLaval :)
+          Welcome <v-span class="span">to VueJs </v-span> Tutorial :)
         </h1>
-        <v-p class="p">DeLaval provides intergrated solution designed to improve dairy production. animal welfare and overall quality of life.</v-p>    
+        <v-p class="p">VueJs is a JavaScript framework for building user interfaces. It builds on top of standard HTML, CSS, and JavaScript and provides a declarative and component-based programming model that helps you efficiently develop user interfaces, be they simple or complex.</v-p>    
       </v-col>
     </v-row>
     <v-row class="text-center">
       <v-col class="mb-4">
        <v-btn color="pink" v-on:click="add">count</v-btn>
-  
        <h2>{{count}}</h2>
       </v-col>
     </v-row>

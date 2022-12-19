@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-banner single-line>
+    <v-banner>
       <div class="about">
         <div class="header">
           <div class="title">
@@ -21,15 +21,14 @@
             <v-icon small color="red"> mdi-message-text </v-icon>
             <a id="redtext"> SMS: 'TCSiON' to 16161</a> |
             <v-icon small color="teal darken-2"> mdi-email </v-icon>
-            <a id="phoneno"> Email US </a> | <i class="fa-solid fa-computer"></i>
+            <a id="phoneno"> Email US </a> |
+            <i class="fa-solid fa-computer"></i>
             <v-icon small color="orange darken-2">
-            mdi-arrow-up-bold-box-outline
+              mdi-arrow-up-bold-box-outline
             </v-icon>
             <a id="phoneno"> Visit Our Portal </a> |
             <a id="phoneno"> Help Central </a> |
-            <v-icon small  color="purple darken-2">
-             mdi-dialpad
-            </v-icon>
+            <v-icon small color="purple darken-2"> mdi-dialpad </v-icon>
             <a id="phoneno"> Language : </a>
             <select name="English">
               <option value="English">English</option>
@@ -54,7 +53,6 @@
         <v-col cols="7">
           <v-card max-width="500">
             <v-form ref="form" id="form" @submit.prevent="loginValidation">
-
               <div class="form-control">
                 <label for="email" class="heading"></label>
                 <v-text-field
@@ -75,8 +73,15 @@
                 ></v-text-field>
                 <span v-if="errorPassword">{{ errorPassword }}</span>
               </div>
-              
-              <v-btn depressed  rounded  align="center"  color="primary" type="submit">Login</v-btn>
+
+              <v-btn
+                depressed
+                rounded
+                align="center"
+                color="primary"
+                type="submit"
+                >Login</v-btn
+              >
             </v-form>
           </v-card>
         </v-col>
@@ -98,11 +103,7 @@ export default {
   methods: {
     loginValidation() {
 
-      const loginDetails = JSON.parse(localStorage.getItem('data'))
-      //console.log(loginDetails);
-     
-      // console.log("hii")
-     
+      const loginDetails = JSON.parse(localStorage.getItem('data'))   
       //validation for email-------------------------
       if (!this.email) {
         this.errorEmail = "***required this field";
@@ -120,12 +121,12 @@ export default {
         this.errorPassword="";
       }
       if(this.errorEmail == "" && this.errorPassword==""){
-        if(this.email == loginDetails[0].email && this.password == loginDetails[0].password){
-          console.log('Login verified');
+          let loginData = loginDetails.find(check => check.email === this.email);
+          if(this.email == loginData.email && this.password == loginData.password){
           this.$router.push('/newdashboard');
         }
       }
-       }
+      }
     },
     
 }
